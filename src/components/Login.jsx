@@ -35,6 +35,7 @@ export default function Login({ onLogin }) {
               maxLength="40"
               required
               onChange={handleChange}
+              value={formValue.email || ""}
             />
             <input
               className="sign__input"
@@ -45,6 +46,7 @@ export default function Login({ onLogin }) {
               maxLength="20"
               required
               onChange={handleChange}
+              value={formValue.password || ""}
             />
           </fieldset>
           <button className="sign__button" type="submit">

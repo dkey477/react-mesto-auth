@@ -20,7 +20,7 @@ function PopupWithForm({
         />
         <form
           className="popup__content"
-          name="popup"
+          name={`popup-${name}`}
           method="post"
           onSubmit={onSubmit}
         >

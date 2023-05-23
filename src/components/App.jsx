@@ -144,18 +144,20 @@ function App() {
     checkToken();
   }, []);
 
+
   function handleRegister(email, password) {
     auth
       .register(email, password)
       .then(() => {
-        setIsInfoTooltipOpen(true);
         setAuthComplete(true);
         navigate("/sign-in", { replace: true });
       })
       .catch(() => {
-        setIsInfoTooltipOpen(true);
         setAuthComplete(false);
-      });
+      })
+      .finally(() =>{
+        setIsInfoTooltipOpen(true);
+      })
   }
 
   function handleLogin(email, password) {
