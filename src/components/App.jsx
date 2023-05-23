@@ -208,7 +208,7 @@ function App() {
           }
         />
         <Route
-          pa="*"
+          path="*"
           element={
             loggedIn ? (
               <Navigate to="/" replace />
