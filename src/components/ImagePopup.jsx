@@ -15,7 +15,7 @@ export default function ImagePopup({ card, isOpen, onClose }) {
             src={card.link}
             alt={card.name}
             />
-            <h2 className="popup__title popup__title_type_image" />
+            <h2 className="popup__title popup__title_type_image" />{card.name}
           </div>
     </div>
     )

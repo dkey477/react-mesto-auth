@@ -1,11 +1,11 @@
 import React from "react";
 
 function Footer() {
-  const yer = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
     <footer className="footer">
-      <p className="footer__copyright">© {yer}. Дмитрий Киреев</p>
+      <p className="footer__copyright">© {year}. Дмитрий Киреев</p>
     </footer>
   );
 }

@@ -32,7 +32,7 @@ function App() {
   const [isAuthComplete, setAuthComplete] = useState(false);
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({ email: "" });
+  const [userData, setUserData] = useState("");
 
   const navigate = useNavigate();
 
@@ -132,9 +132,11 @@ function App() {
       auth
         .checkToken(token)
         .then((res) => {
-          setUserData(res.data.email);
-          setLoggedIn(true);
-          navigate("/");
+          if (res) {
+            setLoggedIn(true);
+            setUserData(res.data.email);
+            navigate("/", { replace: true });
+          }
         })
         .catch((err) => console.log(err));
     }
@@ -143,7 +145,6 @@ function App() {
   useEffect(() => {
     checkToken();
   }, []);
-
 
   function handleRegister(email, password) {
     auth
@@ -155,9 +156,9 @@ function App() {
       .catch(() => {
         setAuthComplete(false);
       })
-      .finally(() =>{
+      .finally(() => {
         setIsInfoTooltipOpen(true);
-      })
+      });
   }
 
   function handleLogin(email, password) {
@@ -166,7 +167,7 @@ function App() {
       .then((data) => {
         localStorage.setItem("jwt", data.token);
         setLoggedIn(true);
-        setUserData({ email });
+        setUserData(email);
         navigate("/");
       })
       .catch(() => {
@@ -182,11 +183,7 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Header
-        userData={userData}
-        loggedIn={loggedIn}
-        onSignOut={handleSignOut}
-      />
+      <Header email={userData} loggedIn={loggedIn} onSignOut={handleSignOut} />
       <Routes>
         <Route
           path="/sign-up"

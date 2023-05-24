@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../images/logo.svg";
 import { Link, useLocation } from "react-router-dom";
 
-function Header({ onSignOut, userData }) {
+function Header({ onSignOut, email }) {
   const { pathname } = useLocation();
 
   return (
@@ -21,7 +21,7 @@ function Header({ onSignOut, userData }) {
         )}
         {pathname === "/" && (
           <div className="navigate__block">
-            <p className="navigate__email">{userData.email}</p>
+            <p className="navigate__email">{email}</p>
             <Link to="/sign-up" className="navigate__link" onClick={onSignOut}>
               Выйти
             </Link>

@@ -7,9 +7,10 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   const [cardLink, setCardLink] = useState("");
 
   useEffect(() => {
-    isOpen && setCardName("");
-    setCardLink("");
-    setCardLink("");
+    if (isOpen) {
+      setCardName("");
+      setCardLink("");
+    }
   }, [isOpen]);
 
   function handleCardNameChange(evt) {
